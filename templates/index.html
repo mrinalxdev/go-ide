@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Cosmic Code Editor</title>
+        <script src="https://unpkg.com/htmx.org@1.9.10"></script>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <link rel="stylesheet" href="/static/styles.css" />
+    </head>
+    <body
+        class="bg-gradient-to-r from-purple-900 to-indigo-900 text-white min-h-screen flex flex-col"
+    >
+        <header class="p-6 text-center">
+            <h1 class="text-4xl font-bold mb-2">GOID</h1>
+            <p class="text-xl">Explore the universe of coding</p>
+        </header>
+        <main class="flex-grow flex items-center justify-center">
+            <div
+                class="bg-black bg-opacity-50 p-8 rounded-lg shadow-xl transform hover:scale-105 transition-transform duration-300"
+            >
+                <h2 class="text-2xl mb-4">Choose your language:</h2>
+                <div class="space-x-4">
+                    <button
+                        hx-get="/editor"
+                        hx-target="body"
+                        hx-swap="innerHTML"
+                        class="cosmic-btn"
+                        data-language="python"
+                    >
+                        Python
+                    </button>
+                    <button
+                        hx-get="/editor"
+                        hx-target="body"
+                        hx-swap="innerHTML"
+                        class="cosmic-btn"
+                        data-language="javascript"
+                    >
+                        JavaScript
+                    </button>
+                    <button
+                        hx-get="/editor"
+                        hx-target="body"
+                        hx-swap="innerHTML"
+                        class="cosmic-btn"
+                        data-language="go"
+                    >
+                        Go
+                    </button>
+                </div>
+            </div>
+        </main>
+        <footer class="p-4 text-center">
+            <p>&copy; 2024 GOID Code Editor. All rights reserved.</p>
+        </footer>
+        <script>
+            document.querySelectorAll(".cosmic").forEach((btn) => {
+                btn.addEventListener("click", () => {
+                    localStorage.setItem(
+                        "selectedLanguage",
+                        btn.dataset.language,
+                    );
+                });
+            });
+        </script>
+    </body>
+</html>
