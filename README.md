@@ -14,5 +14,5 @@ go mod tidy
 go run main.go
 ```
 
-![./assets/img1.png]
-![./assets/img2.png]
+!(alt text)[./assets/img1.png]
+!(alt text)[./assets/img2.png]
